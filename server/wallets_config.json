@@ -1,0 +1,189 @@
+{
+"wallets":
+[
+    {
+      "name": "metamask",
+      "title": "Metamask",
+      "image": "metamask.svg",
+      "primarycolor": "#f6851b",
+      "secondarycolor": "#f6851b40",
+      "textcolor": "#a95b12"
+    },
+    {
+      "name": "phantom",
+      "title": "Phantom",
+      "image": "phantom.svg",
+      "primarycolor": "#ab9ff2",
+      "secondarycolor": "#ab9ff240",
+      "textcolor": "#746ca5"
+    },
+    {
+      "name": "trustwallet",
+      "title": "Trust Wallet",
+      "image": "trustwallet.svg",
+      "primarycolor": "#0093ff",
+      "secondarycolor": "#0093ff40",
+      "textcolor": "#003a65"
+    },
+    {
+      "name": "solflare",
+      "title": "Solflare",
+      "image": "solflare.png",
+      "primarycolor": "#fc6622",
+      "secondarycolor": "#fc662240",
+      "textcolor": "#62270c"
+    },
+    {
+      "name": "coinbase",
+      "title": "Coinbase",
+      "image": "coinbase.svg",
+      "primarycolor": "#0052ff",
+      "secondarycolor": "#0052ff40",
+      "textcolor": "#002065"
+    },
+    {
+      "name": "ethereumwallet",
+      "title": "Ethereum Wallet",
+      "image": "ethereum.svg",
+      "primarycolor": "#c66bc9",
+      "secondarycolor": "#c66bc940",
+      "textcolor": "#743f75"
+    },
+    {
+      "name": "exodus",
+      "title": "Exodus",
+      "image": "exodus.svg",
+      "primarycolor": "#8c91f5",
+      "secondarycolor": "#8c91f540",
+      "textcolor": "#252641"
+    },
+    {
+      "name": "blockchain",
+      "title": "Blockchain",
+      "image": "blockchain.png",
+      "primarycolor": "#85b5f9",
+      "secondarycolor": "#85b5f940",
+      "textcolor": "#33455f"
+    },
+    {
+      "name": "cryptocom",
+      "title": "Crypto",
+      "image": "cryptocom.png",
+      "primarycolor": "#002d74",
+      "secondarycolor": "#002d7440",
+      "textcolor": "#000f27"
+    },
+    {
+      "name": "trezor",
+      "title": "Trezor",
+      "image": "trezor.svg",
+      "primarycolor": "#ffffff",
+      "secondarycolor": "#ffffff40",
+      "textcolor": "#181818"
+    },
+    {
+      "name": "rainbow",
+      "title": "Rainbow",
+      "image": "rainbow.png",
+      "primarycolor": "#123a8b",
+      "secondarycolor": "#123a8b40",
+      "textcolor": "#081a3e"
+    },
+    {
+      "name": "guarda",
+      "title": "Guarda",
+      "image": "guarda.png",
+      "primarycolor": "#798ce5",
+      "secondarycolor": "#798ce540",
+      "textcolor": "#272e4b"
+    },
+    {
+      "name": "rabby",
+      "title": "Rabby",
+      "image": "rabby.svg",
+      "primarycolor": "#939cff",
+      "secondarycolor": "#939cff40",
+      "textcolor": "#3a3e65"
+    },
+    {
+      "name": "okx",
+      "title": "OKX",
+      "image": "okx.svg",
+      "primarycolor": "#ffffff",
+      "secondarycolor": "#ffffff40",
+      "textcolor": "#181818"
+    },
+    {
+      "name": "ledger",
+      "title": "Ledger",
+      "image": "ledger.svg",
+      "primarycolor": "#ffffff",
+      "secondarycolor": "#ffffff40",
+      "textcolor": "#181818"
+    },
+    {
+      "name": "safepal",
+      "title": "Safepal",
+      "image": "safepal.svg",
+      "primarycolor": "#4a21ef",
+      "secondarycolor": "#4a21ef40",
+      "textcolor": "#1a0b55"
+    },
+    {
+      "name": "binanceweb3wallet",
+      "title": "Binance Web3 Wallet",
+      "image": "binance.svg",
+      "primarycolor": "#f3ba2f",
+      "secondarycolor": "#f3ba2f40",
+      "textcolor": "#735716"
+    },
+    {
+      "name": "atomic",
+      "title": "Atomic",
+      "image": "atomic.svg",
+      "primarycolor": "#34acfb",
+      "secondarycolor": "#34acfb40",
+      "textcolor": "#144261"
+    },
+    {
+      "name": "torus",
+      "title": "Torus",
+      "image": "torus.png",
+      "primarycolor": "#0364ff",
+      "secondarycolor": "#0364ff40",
+      "textcolor": "#001331"
+    },
+    {
+      "name": "electrum",
+      "title": "Electrum",
+      "image": "electrum.svg",
+      "primarycolor": "#e6e6e6",
+      "secondarycolor": "#e6e6e640",
+      "textcolor": "#4c4c4c"
+    },
+    {
+      "name": "pancakeswap",
+      "title": "Pancakeswap",
+      "image": "pancakeswap.svg",
+      "primarycolor": "#d1884f",
+      "secondarycolor": "#d1884f40",
+      "textcolor": "#372415"
+    },
+    {
+      "name": "wombat",
+      "title": "Wombat",
+      "image": "wombat.svg",
+      "primarycolor": "#ff4f24",
+      "secondarycolor": "#ff4f2440",
+      "textcolor": "#651f0e"
+    },
+    {
+      "name": "keplr",
+      "title": "Keplr",
+      "image": "keplr.svg",
+      "primarycolor": "#3261f0",
+      "secondarycolor": "#3261f040",
+      "textcolor": "#070e23"
+    }
+  ]
+}

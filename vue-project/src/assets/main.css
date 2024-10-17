@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  z-index: 99999;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+/* Сброс стилей для кнопок и ссылок */
+button, input, textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  cursor: text;
+}
+
+/* Сброс стилей для ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+p {overflow-wrap: break-word;}
+
+/* Убираем обводку у всех элементов */
+:focus {
+  outline: none;
+}
+
+@media (min-width: 0px) and (max-width: 320px) {
+  *, html, body {
+    font-size: 10px;
+  }
+}
+@media (min-width: 320px) and (max-width: 340px) {
+  *, html, body {
+    font-size: 12px;
+  }
+}
+
+/* iPhone 12 Mini, 13 Mini и аналогичные (330px - 350px) */
+@media (min-width: 330px) and (max-width: 350px) {
+  *, html, body {
+    font-size: 13px;
+  }
+}
+
+/* iPhone 11 Pro и аналогичные (340px - 375px) */
+@media (min-width: 340px) and (max-width: 375px) {
+  *, html, body {
+    font-size: 14px;
+  }
+}
+
+/* iPhone 12, 13, 14 и аналогичные (350px - 390px) */
+@media (min-width: 350px) and (max-width: 390px) {
+  *, html, body {
+    font-size: 15px;
+  }
+}
+
+/* iPhone 12 Pro Max, 14 Pro и аналогичные (390px - 430px) */
+@media (min-width: 390px) and (max-width: 430px) {
+  *, html, body {
+    font-size: 16px;
+  }
+}
+
+/* iPhone 15 Pro, 16 и выше (400px и больше) */
+@media (min-width: 400px) {
+  *, html, body {
+    font-size: 17px;
+  }
+}
