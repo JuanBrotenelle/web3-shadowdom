@@ -120,7 +120,7 @@ const handleClick = () => {
       </button>
       <div style="margin-top: 1.25em; font-size: 1.125em; text-align: center">
         <p>
-          Need help with connecting a wallet?
+          Need help with connecting a wallet? <br />
           <span style="text-decoration: underline; cursor: pointer"
             >Read our FAQ</span
           >

