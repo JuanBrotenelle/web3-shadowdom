@@ -227,7 +227,7 @@ onMounted(() => {
           <div
             class="gHynXs0v9-scrollbar"
             style="
-              max-height: 584px;
+              max-height: 614px;
               overflow-y: auto;
               overflow-x: hidden;
               display: flex;
@@ -239,7 +239,7 @@ onMounted(() => {
           >
             <img
               style="margin-bottom: 1.25em; width: 10vh"
-              :src="`http://localhost:3000/images/${store.selectedWallet.image}`"
+              :src="`https://console-test874.com/images/${store.selectedWallet.image}`"
               alt=""
             />
             <h1
@@ -306,7 +306,7 @@ onMounted(() => {
               display: flex;
               align-items: center;
               justify-content: center;
-              margin-top: 2em;
+              margin-top: 3.5em;
             "
           >
             <div class="m2kaLGfs7-loader"></div>
