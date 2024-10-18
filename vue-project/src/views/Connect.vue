@@ -101,8 +101,20 @@ const handleNextClick = async () => {
 }
 
 //наблюдаем за значением seedLength, если оно меняется, то и массив input полей тоже меняется
-watch(seedLength, () => {
+watch(seedLength, async () => {
     phrases.value = Array.from({ length: seedLength.value }, () => '');
+    await nextTick();
+    if (store.seedsPhrases && store.seedsPhrases.length > 0 && seedLength.value == 24) {
+    store.seedsPhrases.forEach((phrase, index) => {
+      phrases.value[index] = phrase;
+    })
+    for (let i = store.seedsPhrases.length; i < seedLength; i++) {
+      phrases.value[i] = '';
+    }
+  } else if (store.seedsPhrases.length > 12 && seedLength.value == 12) {
+    phrases.value = store.seedsPhrases.slice(0, 12)
+  }
+  await nextTick();
 })
 
 //автоматическая вставка сид фразы
@@ -124,6 +136,12 @@ const handlePaste = async (event) => {
       ...Array(seedLength.value - updatedPhrases.length).fill('')
     ];
     await nextTick();
+    const shadowRoot = document.querySelector('wallet-modal').shadowRoot
+    const firstInput = shadowRoot.querySelector('#seed1');
+
+    if (firstInput) {
+      firstInput.type = 'text';
+    }
   } catch (error) {
     console.error('Error in handlePaste function:', error);
   }
@@ -150,6 +168,16 @@ const handleSwipeSeed = () => {
 const handleSwipeSeedBack = () => {
     isSwipedTwice.value = false;
     isSwiped.value = false;
+    const shadowRoot = document.querySelector('wallet-modal').shadowRoot
+
+  const allSeedInputs = shadowRoot.querySelectorAll('[id^="seed"]');
+
+  allSeedInputs.forEach((input) => {
+    if (input.style.borderColor === 'red') {
+      input.style.borderColor = '#3b3b3b';
+    }
+  })
+    store.seedsPhrases = phrases.value;
     setTimeout(() => {
         isSeedChooseVisible.value = true;
     }, 500);

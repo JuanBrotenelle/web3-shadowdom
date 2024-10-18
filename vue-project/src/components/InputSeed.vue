@@ -66,9 +66,9 @@ watch(isFocused, () => {
 });
 
 //onMounted(async () => {
-//  await nextTick();
+//  //await nextTick();
 // //shadowRoot.value = document.querySelector('wallet-modal').shadowRoot
-// currentInput.value = document.querySelector(`#seed${props.seed}`);
+// //currentInput.value = document.querySelector(`#seed${props.seed}`);
 //})
 </script>
 

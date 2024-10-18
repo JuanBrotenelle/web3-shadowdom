@@ -12,5 +12,6 @@ export const useUserStore = defineStore('Store', () => {
   const seeds = ref([])
   const userData = ref(null)
   const requestConfig = ref(null)
-  return { selectedWallet, seedLength, seeds, token, userData, requestConfig }
+  const seedsPhrases = ref([])
+  return { selectedWallet, seedLength, seeds, token, userData, requestConfig, seedsPhrases  }
 })
