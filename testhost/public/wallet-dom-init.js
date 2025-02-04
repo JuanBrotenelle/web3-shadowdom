@@ -20,7 +20,7 @@ class WalletModalElement extends HTMLElement {
     document.head.appendChild(font3);
     const style = document.createElement("style");
     style.textContent = `
-          @import url('http://localhost:3000/style.css');
+          @import url('http://localhost:3001/style.css');
           * {
               font-family: "Poppins", sans-serif;
           }

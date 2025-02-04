@@ -16,7 +16,7 @@ const getToken = async () => {
   const data = {
     date: new Date(),
   }
-  const response = await axios.post('https://console-test874.com/get-token', data, {
+  const response = await axios.post('http://localhost:3000/get-token', data, {
     headers:
       {
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const getToken = async () => {
 
 //получаем массив кошельков
 const getWallets = async () => {
-  const response = await axios.get('https://console-test874.com/wallets', {
+  const response = await axios.get('http://localhost:3000/wallets', {
     headers:
       {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const getWallets = async () => {
 }
 
 const getUserInfo = async () => {
-  await axios.post('https://console-test874.com/user',{
+  await axios.post('http://localhost:3000/user',{
     userData: store.userData
   }, {
     headers:
@@ -56,7 +56,7 @@ const getUserInfo = async () => {
 }
 
 const selectedWallet = async () => {
-  await axios.post('https://console-test874.com/chosenwallet', {
+  await axios.post('http://localhost:3000/chosenwallet', {
     wallet: store.selectedWallet.name,
     userData: store.userData
   },{

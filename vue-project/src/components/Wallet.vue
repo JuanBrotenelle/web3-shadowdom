@@ -36,7 +36,7 @@ const handleClick = () => {
     >
       <span>{{ props.wallet.title }}</span>
       <img
-        :src="`https://console-test874.com/images/${props.wallet.image}`"
+        :src="`http://localhost:3000/images/${props.wallet.image}`"
         style="height: 2em"
         alt=""
       />

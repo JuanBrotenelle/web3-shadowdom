@@ -10,7 +10,7 @@ const wallet = reactive(store.selectedWallet);
 
 <template>
   <img
-    :src="`https://console-test874.com/images/${wallet.image}`"
+    :src="`http://localhost:3000/images/${wallet.image}`"
     style="width: 10vh"
     alt=""
   />
