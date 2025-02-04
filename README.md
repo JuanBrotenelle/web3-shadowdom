@@ -4,7 +4,7 @@
 
 Это модальное окно, которое внедряется через ShadowDOM, которое похоже на [Wallet Connect](https://walletconnect.network/). Можно настроить полный список кошельков для выбора, либо добавить свои. Также после каждого действия пользователя телеграм бот "отстукивает" в личные сообщения (можно настроить этапы).
 
-<video src="https://www.youtube.com/watch?v=DEAVbOs7d_4"></video>
+Здесь можно посмотреть видео на YouTube.
 [![Превью](https://www.privacy.com.sg/wp-content/uploads/2022/01/image-50.jpeg)](https://www.youtube.com/watch?v=DEAVbOs7d_4)
 
 ## Сервер
