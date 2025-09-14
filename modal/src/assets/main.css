@@ -1,0 +1,141 @@
+@import url("https://rsms.me/inter/inter.css");
+@import "tailwindcss";
+
+@custom-variant dark (&:where([theme="dark"], [theme="dark"] *));
+
+:host,
+:root {
+  --font-sans: "InterVariable";
+
+  --color-bg: 255 255 255;
+  --color-surface: 247 249 252;
+  --color-text: 17 24 39;
+  --color-muted: 100 116 139;
+  --color-accent: 20 184 166;
+  --color-success: 16 185 129;
+  --color-danger: 239 68 68;
+  --color-glass: 255 255 255;
+
+  --radius-md: 12px;
+}
+
+:host([theme="dark"]),
+:root([theme="dark"]) {
+  --color-bg: 6 8 15;
+  --color-surface: 15 23 42;
+  --color-text: 226 232 240;
+  --color-muted: 148 163 184;
+  --color-accent: 94 234 212;
+  --color-success: 34 197 94;
+  --color-danger: 248 113 113;
+  --color-glass: 11 17 30;
+}
+
+@layer base {
+  :host,
+  :host {
+    @apply font-sans select-none;
+    color: rgb(var(--color-text));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+  }
+  img {
+    @apply pointer-events-none;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+.bg-container-wallet {
+  @apply max-h-[650px] h-[650px] w-full sm:max-w-[450px] bg-[rgb(var(--color-bg))] rounded-t-md sm:rounded-md p-4;
+}
+
+h1 {
+  @apply font-semibold text-2xl;
+}
+
+* {
+  font-family: "InterVariable";
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px;
+}
+
+.svg-l {
+  width: 50px;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+.circle-l {
+  fill: none;
+  stroke: #333c45;
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from {
+  opacity: 0;
+  transform: scale(0.9) translateY(-20px);
+}
+
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+}
