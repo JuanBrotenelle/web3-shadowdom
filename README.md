@@ -1,3 +1,5 @@
+[![Test](https://github.com/JuanBrotenelle/web3-shadowdom/actions/workflows/test.yml/badge.svg)](https://github.com/JuanBrotenelle/web3-shadowdom/actions/workflows/test.yml) [![Build and Deploy to Netlify](https://github.com/JuanBrotenelle/web3-shadowdom/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/JuanBrotenelle/web3-shadowdom/actions/workflows/build-and-deploy.yml)
+
 # web3-shadowdom
 
 A long time ago, I worked on this project, and after several rewrites and gaining sufficient experience, I decided to refactor it. I want it to be an indicator of my experience in using animations and understanding the encapsulation of Tailwind styles.
