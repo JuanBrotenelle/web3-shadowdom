@@ -8,13 +8,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ButtonBack: typeof import('./src/components/Buttons/ButtonBack.vue')['default']
+    ButtonNext: typeof import('./src/components/Buttons/ButtonNext.vue')['default']
     ChooseSeed: typeof import('./src/components/ChooseSeed.vue')['default']
     Input: typeof import('./src/components/Input/Input.vue')['default']
     InputSeed: typeof import('./src/components/InputSeed.vue')['default']
     Loader: typeof import('./src/components/Loader/Loader.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
+    Option: typeof import('./src/components/Select/Option.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Select: typeof import('./src/components/Select/Select.vue')['default']
+    SelectBox: typeof import('./src/components/Select/SelectBox.vue')['default']
+    SelectOptions: typeof import('./src/components/Select/SelectOptions.vue')['default']
+    SelectTrigger: typeof import('./src/components/Select/SelectTrigger.vue')['default']
     WalletCard: typeof import('./src/components/WalletCard.vue')['default']
   }
 }

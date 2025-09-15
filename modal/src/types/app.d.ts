@@ -1,3 +1,5 @@
+import { Ref } from "vue";
+
 export interface WalletItem {
   name: string;
   title: string;
@@ -36,3 +38,12 @@ export interface DataEventData {
 }
 
 export type PingEvent = PageEvent | ErrorEvent | DataEvent;
+
+export interface SeedInput {
+  model: Ref<string>;
+  hide: boolean;
+  valid: boolean;
+  passed: boolean;
+}
+
+export type WordlistBip39 = string[];

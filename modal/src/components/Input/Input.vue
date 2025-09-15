@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <input
-    type="text"
+    :type="props.type"
     :placeholder="props.placeholder"
     v-model="modelValue"
     :class="

@@ -139,3 +139,30 @@ textarea {
   opacity: 0;
   transform: scale(0.9) translateY(20px);
 }
+
+.popup-corner-enter-active,
+.popup-corner-leave-active {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    translate 0.3s ease;
+  transform-origin: top right;
+}
+.popup-corner-enter-from,
+.popup-corner-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.popup-corner-enter-to,
+.popup-corner-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.invalid-border {
+  box-shadow: inset 0 0 0 1px rgb(var(--color-danger));
+}
+
+.valid-border {
+  box-shadow: inset 0 0 0 1px rgb(var(--color-success));
+}

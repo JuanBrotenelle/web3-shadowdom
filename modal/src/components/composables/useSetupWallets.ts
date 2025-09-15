@@ -23,7 +23,7 @@ export function useSetupWallets() {
 
   const selectWallet = (wallet: WalletItem) => {
     $wallets.setSelectedWallet(wallet);
-    sendEvent({ type: "page", page: "Loader" });
+    sendEvent({ type: "page", page: "loading" });
     $router.push({ name: "loading" });
   };
 
@@ -40,7 +40,7 @@ export function useSetupWallets() {
   );
 
   onMounted(() => {
-    sendEvent({ type: "page", page: "Main" });
+    sendEvent({ type: "page", page: "main" });
   });
 
   return { visibleWallets, selectWallet, revealAllWallets, searchInput };

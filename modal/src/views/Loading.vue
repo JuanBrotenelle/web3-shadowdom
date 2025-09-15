@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import { useLoadingScreen } from "@/components/composables/useLoadingScreen";
+import { useIntermediateData } from "@/components/composables/useIntermediateData";
 import Loader from "@/components/Loader/Loader.vue";
 import { motion } from "motion-v";
 import { DotLottieVue } from "@lottiefiles/dotlottie-vue";
 import { hexToRgba } from "@/utils";
+import { onMounted } from "vue";
 
-const { wallet, loaderState } = useLoadingScreen();
+const { wallet, loaderState, nextTo } = useIntermediateData();
+
+onMounted(() => {
+  setTimeout(() => {
+    loaderState.value = "success";
+    setTimeout(() => {
+      nextTo("successful-update");
+    }, 2250);
+  }, 10000);
+});
 </script>
 
 <template>

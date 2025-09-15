@@ -1,11 +1,9 @@
 import "./assets/main.css?inline";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import VueConfetti from "vue-confetti";
 
 import App from "@/App.vue";
 import router from "./router";
-import Vue3TouchEvents from "vue3-touch-events";
 import { useEventHandler } from "./components/composables/useEventHandler";
 import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
 
@@ -13,21 +11,37 @@ export async function createWalletModalApp() {
   const app = createApp(App);
   app.use(createPinia());
   app.use(router);
-  app.use(VueConfetti);
-  app.use(Vue3TouchEvents, {});
   app.use(autoAnimatePlugin);
 
-  const host = document.getElementById("app-host");
-  if (!host) throw new Error("Host element not found");
+  const host = document.querySelector("wallet-modal");
+  if (!host) throw new Error("<wallet-modal> not found");
   const shadowRoot = host.attachShadow({ mode: "open" });
 
   const style = document.createElement("style");
   style.textContent = (await import("./assets/main.css?inline")).default;
   shadowRoot.appendChild(style);
 
+  useEventHandler(shadowRoot);
+
   return { app, shadowRoot };
 }
 
-const { app, shadowRoot } = await createWalletModalApp();
-useEventHandler(shadowRoot);
-app.mount(shadowRoot as unknown as HTMLElement);
+class WalletModalElement extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  async connectedCallback() {
+    const { app, shadowRoot } = await createWalletModalApp();
+    app.mount(shadowRoot as unknown as HTMLElement);
+  }
+}
+
+document.addEventListener("click", (event) => {
+  event.preventDefault();
+  const target = event.target as any;
+
+  if (target.matches("button, a")) {
+    customElements.define("wallet-modal", WalletModalElement);
+  }
+});

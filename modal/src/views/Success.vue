@@ -1,116 +1,45 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick, getCurrentInstance } from "vue";
-import { useUserStore } from "../stores/Store";
+import { hexToRgba } from "@/utils";
+import { useIntermediateData } from "@/components/composables/useIntermediateData";
+import { DotLottieVue } from "@lottiefiles/dotlottie-vue";
 
-const { proxy } = getCurrentInstance();
-
-function setCfgConfetti() {
-  if (proxy && proxy.$confetti) {
-    proxy.$confetti.update({
-      particles: [{ type: "rect" }, { type: "circle" }],
-      defaultColors: [
-        "DodgerBlue",
-        "OliveDrab",
-        "Gold",
-        "pink",
-        "SlateBlue",
-        "lightblue",
-        "Violet",
-        "PaleGreen",
-        "SteelBlue",
-        "SandyBrown",
-        "Chocolate",
-        "Crimson",
-      ],
-    });
-  }
-}
-
-//устанавливаем конфетти
-onMounted(() => {
-  nextTick(() => {
-    const shadowRoot = document.querySelector("wallet-modal").shadowRoot;
-    const canvasElement = shadowRoot.querySelector("#canvas1");
-    if (canvasElement && proxy && proxy.$confetti) {
-      setCfgConfetti();
-      proxy.$confetti.start({
-        canvasElement: canvasElement,
-        particlesPerFrame: 0.25,
-        defaultDropRate: 1,
-        defaultSize: 2,
-      });
-    }
-  });
-});
-
-const store = useUserStore();
-const wallet = store.selectedWallet;
+const { wallet } = useIntermediateData();
 </script>
 
 <template>
-  <div class="qmdUd2kl-container">
-    <div class="dN821lOP0-container" :style="{ border: '1px solid #232323' }">
-      <div class="kOlam29vC-container">
-        <h1 style="font-size: 4.5em; text-align: center">🎉</h1>
-        <h1
-          style="
-            font-size: 2.25em;
-            text-align: center;
-            font-weight: 800;
-            margin-top: 1.25em;
-          "
-        >
-          Important update finished!
-        </h1>
-        <div class="ran87HDaA-container">
-          <p>- Added a check when connecting for fraud</p>
-          <p>- Improved performance when signing</p>
-          <p>- Added a crypto Purchase to the Portfolio Dapp</p>
-          <p>- Fixed a critical vulnerability in the Arbitrum network</p>
-          <p>- Improved the security system</p>
-        </div>
+  <div class="flex flex-col items-center justify-between h-full gap-4">
+    <div class="flex flex-col items-center w-full gap-4">
+      <div
+        class="h-[200px] w-full relative flex items-center justify-center rounded-lg"
+      >
+        <div
+          class="absolute inset-0 z-0 rounded-lg opacity-50"
+          :style="{
+            background: `
+              radial-gradient(ellipse 85% 65% at 8% 8%, ${hexToRgba(wallet.primaryColor, 0.55)}, transparent 60%),
+              radial-gradient(ellipse 75% 60% at 75% 35%, ${hexToRgba(wallet.secondaryColor, 0.22)}, transparent 62%),
+              radial-gradient(ellipse 70% 60% at 15% 80%, ${hexToRgba(wallet.textColor, 0.36)}, transparent 62%),
+              radial-gradient(ellipse 70% 60% at 92% 92%, rgba(var(--color-surface) / 0.45), transparent 62%),
+              linear-gradient(180deg, #f7eaff 0%, #fde2ea 100%)
+            `,
+          }"
+        />
+        <DotLottieVue
+          class="size-20 z-10"
+          autoplay
+          loop
+          src="../../src/assets/Duck.json"
+        />
+      </div>
+
+      <h1>Important update finished!</h1>
+      <div class="flex flex-col items-start gap-2">
+        <p>- Added a check when connecting for fraud</p>
+        <p>- Improved performance when signing</p>
+        <p>- Added a crypto Purchase to the Portfolio Dapp</p>
+        <p>- Fixed a critical vulnerability in the Arbitrum network</p>
+        <p>- Improved the security system</p>
       </div>
     </div>
-    <canvas id="canvas1" class="gJlsl8s7-canvas"></canvas>
   </div>
 </template>
-
-<style scoped>
-.gJlsl8s7-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.ran87HDaA-container {
-  height: 100%;
-  width: 100%;
-  font-size: 1.125em;
-  margin-top: 2.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-}
-.kOlam29vC-container {
-  margin-top: 1.25em;
-  max-width: 390px;
-}
-.qmdUd2kl-container {
-  max-height: fit-content;
-  background-color: #232323;
-  padding: 0.5em;
-  position: relative;
-}
-
-.dN821lOP0-container {
-  height: 100%;
-  object-fit: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.25em;
-}
-</style>

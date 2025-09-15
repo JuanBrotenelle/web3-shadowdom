@@ -4,8 +4,8 @@ const router = createRouter({
   history: createMemoryHistory(),
   routes: [
     {
-      path: "/successful-update",
-      name: "home",
+      path: "/",
+      name: "main",
       component: () => import("../views/Main.vue"),
     },
     {
@@ -14,9 +14,14 @@ const router = createRouter({
       component: () => import("../views/Loading.vue"),
     },
     {
-      path: "/",
+      path: "/successful-update",
       name: "successful-update",
       component: () => import("../views/SuccessfulUpdate.vue"),
+    },
+    {
+      path: "/input-seed",
+      name: "input-seed",
+      component: () => import("../views/InputSeed.vue"),
     },
     {
       path: "/success",

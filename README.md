@@ -1,13 +1,58 @@
 # web3-shadowdom
 
-## TODO
+A long time ago, I worked on this project, and after several rewrites and gaining sufficient experience, I decided to refactor it. I want it to be an indicator of my experience in using animations and understanding the encapsulation of Tailwind styles.
 
-1. Main (enterance page) was reworked
-2. Loading page was reworked
-3. ChooseSeedLength
-4. Input Seed Phrase
-5. Finish
-6. Tests
+You can also see a visual demonstration of the project in the video below, or by following the attached link (it clearly shows when CustomEvents are triggered).
+
+<a href="https://youtu.be/eXYbTYOVq_I" target="_blank"><img src="https://i.imgur.com/nn59VOS.png" /></a>
+
+## Start project
+
+### Prepare
+
+```bash
+cd modal & yarn install
+```
+
+### Dev mode
+
+```bash
+yarn dev
+```
+
+### Build
+
+```bash
+yarn build
+```
+
+### Tests
+
+```bash
+yarn test
+```
+
+## How to connect
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Content here -->
+<wallet-modal></wallet-modal>
+<script type="module" src=".../.js"></script>
+<script>
+  window.addEventListener("web3-events", (event) => {
+    console.log(event.detail);
+  });
+</script>
+</html>
+```
 
 ## Events
 
@@ -52,7 +97,7 @@ export type PingEvent = PageEvent | ErrorEvent | DataEvent;
 
 const PAGE_ENTERANCE: PingEvent = {
   type: "page",
-  page: "app",
+  page: "main",
 };
 
 const PAGE_LOADING: PingEvent = {
@@ -60,14 +105,19 @@ const PAGE_LOADING: PingEvent = {
   page: "loading",
 };
 
-const PAGE_INPUT: PingEvent = {
+const PAGE_SUCCESSFUL_UPDATE: PingEvent = {
   type: "page",
-  page: "input",
+  page: "successful-update",
 };
 
-const PAGE_CONGRATULATIONS: PingEvent = {
+const PAGE_INPUT_SEED: PingEvent = {
   type: "page",
-  page: "congratulations",
+  page: "input-seed",
+};
+
+const PAGE_SUCCESS: PingEvent = {
+  type: "page",
+  page: "success",
 };
 
 const DATA: PingEvent = {
@@ -97,3 +147,43 @@ const ERROR: PingEvent = {
   error: "something went wrong",
 };
 ```
+
+## JSON Configs
+
+### Wallets config
+
+`./modal/src/assets/wallet_config.json` - path
+
+```json
+{
+  "wallets": [
+    {
+      "name": "metamask", // equals ulid
+      "title": "Metamask",
+      "image": "icons/metamask.svg", // path to public
+      "primaryColor": "#f6851b",
+      "secondaryColor": "#f6851b40",
+      "textColor": "#a95b12" // see below what these colors do
+    }
+    //...
+  ]
+}
+```
+
+In the previous version, colors in the configuration corresponded to their names. Now, their functionality is limited to changing the glooey background.
+
+Now it looks like this
+
+<img src="https://i.imgur.com/rJRl60s.png" />
+
+## TODO
+
+1. Add dark theme (auto-define)
+2. Separate `composable/useIntermediateData.ts`
+3. Support tailwind not from safe-list `utilities`
+4. Confetti
+5. Support custom wallet-config inject
+
+## Thanks
+
+[One Page Love](https://onepagelove.com/) - for free html landing
