@@ -1,17 +1,6 @@
 @import url("https://rsms.me/inter/inter.css");
 @import "tailwindcss";
 
-@config {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-
 @custom-variant dark (&:where([theme="dark"], [theme="dark"] *));
 
 :host,

@@ -45,7 +45,7 @@ yarn test
 <body>
     <!-- Content here -->
 <wallet-modal></wallet-modal>
-<script src="https://unpkg.com/vue@3.3.0/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vue@3.5.21/dist/vue.global.js"></script>
 <script type="module" src=".../wallet-modal.umd.js"></script>
 <script>
   window.addEventListener("web3-events", (event) => {
@@ -64,7 +64,7 @@ const elem = document.querySelector("wallet-dom");
 
 elem.addEventListener("web3-events", (event) => {
   console.log(event.detail);
-  // {type: 'page', page: 'Main'}
+  // {type: 'page', page: 'main'}
 });
 ```
 
@@ -155,19 +155,19 @@ const ERROR: PingEvent = {
 
 `./modal/src/assets/wallet_config.json` - path
 
-```json
+```json5
 {
-  "wallets": [
+  wallets: [
     {
-      "name": "metamask", // equals ulid
-      "title": "Metamask",
-      "image": "icons/metamask.svg", // path to public
-      "primaryColor": "#f6851b",
-      "secondaryColor": "#f6851b40",
-      "textColor": "#a95b12" // see below what these colors do
-    }
+      name: "metamask", // equals ulid
+      title: "Metamask",
+      image: "icons/metamask.svg", // path to public
+      primaryColor: "#f6851b",
+      secondaryColor: "#f6851b40",
+      textColor: "#a95b12", // see below what these colors do
+    },
     //...
-  ]
+  ],
 }
 ```
 

@@ -6,6 +6,7 @@ import App from "@/App.vue";
 import router from "./router";
 import { useEventHandler } from "./components/composables/useEventHandler";
 import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
+import { getTailwindSheet } from "./utils/tailwind";
 
 export async function createWalletModalApp() {
   const app = createApp(App);
@@ -16,10 +17,7 @@ export async function createWalletModalApp() {
   const host = document.querySelector("wallet-modal");
   if (!host) throw new Error("<wallet-modal> not found");
   const shadowRoot = host.attachShadow({ mode: "open" });
-
-  const style = document.createElement("style");
-  style.textContent = (await import("./assets/main.css?inline")).default;
-  shadowRoot.appendChild(style);
+  shadowRoot.adoptedStyleSheets.push(getTailwindSheet());
 
   useEventHandler(shadowRoot);
 

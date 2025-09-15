@@ -30,7 +30,7 @@ const {
           class="size-6 z-10"
           autoplay
           loop
-          src="../../src/assets/Wallet.json"
+          src="/anims/Wallet.json"
         />
         <span class="font-semibold">|</span>
         <span class="font-semibold">Connect wallet</span>

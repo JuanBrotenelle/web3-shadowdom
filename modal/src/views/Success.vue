@@ -28,7 +28,7 @@ const { wallet } = useIntermediateData();
           class="size-20 z-10"
           autoplay
           loop
-          src="../../src/assets/Duck.json"
+          src="/anims/Duck.json"
         />
       </div>
 

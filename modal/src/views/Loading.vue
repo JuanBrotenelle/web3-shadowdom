@@ -84,7 +84,7 @@ onMounted(() => {
         v-else
         style="height: 50px; width: 50px"
         autoplay
-        src="../../src/assets/Success.lottie"
+        src="/anims/Success.json"
       />
     </div>
   </div>

@@ -7,7 +7,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vscode-pets.theme": "forest",
   "files.associations": {
     "*.css": "tailwindcss"
   },
