@@ -18,8 +18,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build:lib": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.9.0",
@@ -42,11 +44,16 @@
   "devDependencies": {
     "@types/node": "^24.3.1",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vitest/ui": "3.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "dotenv": "^17.2.2",
+    "jsdom": "^27.0.0",
     "prettier": "^3.6.2",
     "tsc": "^2.0.4",
     "typescript": "^5.9.2",
     "vite": "^7.1.5",
     "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-static-copy": "^3.1.2",
     "vitest": "^3.2.4",
     "vue-tsc": "^3.0.6"
   }

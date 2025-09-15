@@ -5,6 +5,7 @@ import dts from "vite-plugin-dts";
 import { resolve } from "path";
 import Components from "unplugin-vue-components/vite";
 import MotionResolver from "motion-v/resolver";
+import { defineConfig as defineVitestConfig } from "vitest/config";
 
 export default defineConfig(({ command }) => {
   if (command === "serve") {
@@ -41,6 +42,7 @@ export default defineConfig(({ command }) => {
           resolvers: [MotionResolver()],
         }),
       ],
+      cssCodeSplit: true,
       define: {
         "process.env": {},
       },
@@ -52,20 +54,10 @@ export default defineConfig(({ command }) => {
           formats: ["es", "umd"],
         },
         rollupOptions: {
-          external: [
-            "vue",
-            "pinia",
-            "vue-router",
-            "vue-confetti",
-            "vue3-touch-events",
-          ],
+          external: ["vue"],
           output: {
             globals: {
               vue: "Vue",
-              pinia: "Pinia",
-              "vue-router": "VueRouter",
-              "vue-confetti": "VueConfetti",
-              "vue3-touch-events": "Vue3TouchEvents",
             },
           },
         },
@@ -77,4 +69,17 @@ export default defineConfig(({ command }) => {
       },
     };
   }
+});
+
+export const vitestConfig = defineVitestConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
+  },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+    },
+  },
 });

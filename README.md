@@ -45,7 +45,8 @@ yarn test
 <body>
     <!-- Content here -->
 <wallet-modal></wallet-modal>
-<script type="module" src=".../.js"></script>
+<script src="https://unpkg.com/vue@3.3.0/dist/vue.global.js"></script>
+<script type="module" src=".../wallet-modal.umd.js"></script>
 <script>
   window.addEventListener("web3-events", (event) => {
     console.log(event.detail);
