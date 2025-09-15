@@ -35,6 +35,8 @@ jobs:
       - name: Prepare Netlify build
         run: |
           mkdir -p netlify-build
+          mkdir -p netlify-build/dist
+          mkdir -p netlify-build/assets
 
           cp -r modal/dist/* netlify-build/dist/
 
