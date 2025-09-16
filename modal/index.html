@@ -1,250 +1,272 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Web3 Shadow Dom</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-    <!-- SEO -->
-    <title>Sphere - One Page Portfolio Template</title>
-    <meta
-      name="description"
-      content="A short, clear description of your portfolio or service (max ~155 characters)."
-    />
-    <link rel="canonical" href="https://yourdomain.com/" />
-    <meta name="robots" content="index,follow" />
+      * {
+        font-family: "Inter", sans-serif;
+      }
 
-    <!-- Favicon -->
-    <link rel="icon" href="./assets/img/global/favicon.ico" sizes="any" />
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
 
-    <!-- Socials -->
-    <meta property="og:title" content="Portfolio — Your Name" />
-    <meta property="og:description" content="Short, shareable summary." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com" />
-    <meta property="og:image" content="./assets/img/og-image.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
 
-    <!-- Styles + JS -->
-    <link rel="preload" href="./assets/css/styles.css?v=0.8" as="style" />
-    <link rel="stylesheet" href="./assets/css/colors.css?v=0.8" />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=0.8" />
-    <script defer src="./assets/js/siema.min.js?v=0.8"></script>
-    <script defer src="./assets/js/main.js?v=0.8"></script>
+      .toast {
+        transform: translateX(100%);
+        transition:
+          transform 0.3s ease-in-out,
+          opacity 0.3s ease-in-out;
+        opacity: 0;
+      }
+
+      .toast.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .toast.success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      }
+
+      .toast.error {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      }
+
+      .toast.info {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      }
+
+      .toast.warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      }
+
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
   </head>
-  <body class="scheme-midnight">
-    <header class="top">
-      <div class="top__left">
-        <img
-          class="top__avatar"
-          src="./assets/img/global/avatar.jpg"
-          alt="Name"
-        />
-        <span class="top__brand">Sphere</span>
-      </div>
-      <nav class="top__right">
-        <div class="links">
-          <a href="#about" class="top__link">Info</a>
-        </div>
-        <a href="https://onepagelove.com/sphere" class="top__cta"
-          >Download <span class="arrow">→</span></a
+  <body
+    class="min-h-screen gradient-bg flex flex-col items-center justify-center p-4"
+  >
+    <div
+      id="toast-container"
+      class="fixed top-4 right-4 z-[9999999999] space-y-2"
+    ></div>
+
+    <div
+      class="glass-effect rounded-2xl p-8 max-w-2xl w-full text-center shadow-2xl"
+    >
+      <div class="floating mb-6">
+        <div
+          class="w-20 h-20 mx-auto bg-white/20 rounded-full flex items-center justify-center"
         >
-      </nav>
-    </header>
-    <section class="hero">
-      <div class="boxed">
-        <span class="eyebrow">Courtesy of One Page Love</span>
-        <h1 class="overview">
-          A minimal portfolio template to showcase your work in one page.
-        </h1>
-      </div>
-    </section>
-
-    <!-- Portfolio start -->
-    <section>
-      <div class="boxed">
-        <!-- Project start -->
-        <div class="slider-group">
-          <div class="siema-wrapper">
-            <div class="siema" data-slider="sphere-1">
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-01.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-01b.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-01c.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-            </div>
-          </div>
-          <span class="slider-controls">
-            <button class="prev" aria-label="Previous slide">Prev</button>
-            <button class="next" aria-label="Next slide">Next</button>
-          </span>
-        </div>
-        <h2 class="slider-heading">Project one with slider</h2>
-        <p>
-          Explores the boundaries
-          <a href="https://onepagelove.com/sphere">between light</a>, texture,
-          and motion through a single, meticulously crafted 3D sphere. Designed
-          in Cinema 4D and rendered with Octane, the sphere serves as both a
-          study in photorealism and a playground for expression.
-        </p>
-        <blockquote>
-          <p>
-            This could be a behind-the-scenes aside about the design process or
-            event a customer testimonial.
-          </p>
-        </blockquote>
-        <p>
-          <a
-            href="https://onepagelove.com/sphere"
-            class="cta-project"
-            title="Visit custom link"
-            >Link →</a
+          <svg
+            class="w-10 h-10 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
           >
-        </p>
-        <hr />
-
-        <!-- Project start -->
-        <div class="slider-group">
-          <div class="siema-wrapper">
-            <div class="siema" data-slider="sphere-2">
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-03.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-03b.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-              <div>
-                <img
-                  src="./assets/img/portfolio/sphere-03c.jpg"
-                  alt="Slide alt text"
-                />
-              </div>
-            </div>
-          </div>
-          <span class="slider-controls">
-            <button class="prev" aria-label="Previous slide">Prev</button>
-            <button class="next" aria-label="Next slide">Next</button>
-          </span>
-        </div>
-        <h2 class="slider-heading">Project two with slider</h2>
-        <p>
-          Explores the boundaries
-          <a href="https://onepagelove.com/sphere">between light</a>, texture,
-          and motion through a single, meticulously crafted 3D sphere. Designed
-          in Cinema 4D and rendered with Octane, the sphere serves as both a
-          study in photorealism and a playground for expression.
-        </p>
-        <p>
-          <a
-            href="https://onepagelove.com/sphere"
-            class="cta-project"
-            title="Visit custom link"
-            >Link →</a
-          >
-        </p>
-        <hr />
-
-        <!-- Project start -->
-        <img src="./assets/img/portfolio/sphere-02.jpg" alt="Image alt text" />
-        <h2>Project three with one image</h2>
-        <p>
-          Explores the boundaries
-          <a href="https://onepagelove.com/sphere">between light</a>, texture,
-          and motion through a single, meticulously crafted 3D sphere. Designed
-          in Cinema 4D and rendered with Octane, the sphere serves as both a
-          study in photorealism and a playground for expression.
-        </p>
-        <p>
-          <a
-            href="https://onepagelove.com/sphere"
-            class="cta-project"
-            title="Visit custom link"
-            >Link →</a
-          >
-        </p>
-        <hr />
-
-        <!-- Project start -->
-        <img src="./assets/img/portfolio/sphere-04.jpg" alt="Image alt text" />
-        <h2>Project four with one image</h2>
-        <p>
-          Explores the boundaries
-          <a href="https://onepagelove.com/sphere">between light</a>, texture,
-          and motion through a single, meticulously crafted 3D sphere. Designed
-          in Cinema 4D and rendered with Octane, the sphere serves as both a
-          study in photorealism and a playground for expression.
-        </p>
-        <p>
-          <a
-            href="https://onepagelove.com/sphere"
-            class="cta-project"
-            title="Visit custom link"
-            >Link →</a
-          >
-        </p>
-        <hr />
-      </div>
-    </section>
-    <!-- Portfolio end -->
-
-    <section class="bg-alt">
-      <div class="bio-section">
-        <div class="bio-image" id="about">
-          <img src="./assets/img/global/author.jpg" alt="Author" />
-        </div>
-        <div class="bio-text">
-          <p>
-            'Sphere' is licensed under CC BY 3.0 — free for personal and
-            commercial use, as long as the footer link to One Page Love remains.
-            Remove the credit with a Sphere Pro upgrade.
-          </p>
-          <div class="bio-links">
-            <ul>
-              <li>
-                <a href="https://onepagelove.com/go/sphere-upgrade">Upgrade</a>
-              </li>
-              <li><a href="https://onepagelove.com/sphere">Download</a></li>
-            </ul>
-            <ul>
-              <li><a href="https://onepagelove.com/sphere">LinkedIn</a></li>
-              <li><a href="https://onepagelove.com/sphere">Email</a></li>
-            </ul>
-          </div>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
         </div>
       </div>
-    </section>
-    <footer class="site-footer">
-      <p class="footer-left">© 2025 Your Brand or Name</p>
-      <p class="footer-right">
-        <a href="https://onepagelove.com/sphere">Sphere Template</a> by One Page
-        Love
-      </p>
-    </footer>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Web3 Shadow DOM
+      </h1>
+
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+      >
+        <button
+          id="demo-btn"
+          class="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/30"
+        >
+          Demo button
+        </button>
+
+        <a
+          href="https://github.com/JuanBrotenelle/web3-shadowdom"
+          target="_blank"
+          class="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+          GitHub repo
+        </a>
+      </div>
+    </div>
+
+    <wallet-modal></wallet-modal>
   </body>
-  <wallet-modal></wallet-modal>
 </html>
+
 <script type="module" src="./dist/wallet-modal.umd.js"></script>
 <script src="https://unpkg.com/vue@3.5.21/dist/vue.global.js"></script>
 <script>
+  class ToastManager {
+    constructor() {
+      this.container = document.getElementById("toast-container");
+      this.toasts = [];
+    }
+
+    show(message, type = "info", duration = 5000) {
+      const toast = this.createToast(message, type);
+      this.container.appendChild(toast);
+      this.toasts.push(toast);
+
+      setTimeout(() => {
+        toast.classList.add("show");
+      }, 100);
+
+      setTimeout(() => {
+        this.remove(toast);
+      }, duration);
+
+      return toast;
+    }
+
+    createToast(message, type) {
+      const toast = document.createElement("div");
+      toast.className = `toast ${type} text-white px-6 py-4 rounded-lg shadow-lg max-w-sm`;
+
+      const icon = this.getIcon(type);
+      const timestamp = new Date().toLocaleTimeString();
+
+      toast.innerHTML = `
+        <div class="flex items-start gap-3">
+          <div class="text-xl">${icon}</div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">${this.getTitle(type)}</div>
+            <div class="text-sm opacity-90 mt-1 whitespace-pre-wrap">${message}</div>
+          </div>
+          <button class="text-white/70 hover:text-white text-lg leading-none" onclick="toastManager.remove(this.parentElement.parentElement)">
+            ×
+          </button>
+        </div>
+      `;
+
+      return toast;
+    }
+
+    getIcon(type) {
+      const icons = {
+        success: "✅",
+        error: "❌",
+        warning: "⚠️",
+        info: "ℹ️",
+      };
+      return icons[type] || icons.info;
+    }
+
+    getTitle(type) {
+      const titles = {
+        success: "Success",
+        error: "Error",
+        warning: "Warn",
+        info: "Info",
+      };
+      return titles[type] || titles.info;
+    }
+
+    remove(toast) {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.parentElement.removeChild(toast);
+        }
+        const index = this.toasts.indexOf(toast);
+        if (index > -1) {
+          this.toasts.splice(index, 1);
+        }
+      }, 300);
+    }
+
+    clear() {
+      this.toasts.forEach((toast) => this.remove(toast));
+    }
+  }
+
+  const toastManager = new ToastManager();
+
   window.addEventListener("web3-events", (event) => {
-    console.log(event.detail);
+    console.log("Web3 Event received:", event.detail);
+
+    const detail = event.detail;
+    let message = "";
+    let type = "info";
+
+    if (typeof detail === "string") {
+      message = detail;
+    } else if (detail && typeof detail === "object") {
+      if (detail.type) {
+        switch (detail.type) {
+          case "page":
+            message = `Page: ${detail.page}`;
+            type = "info";
+            break;
+          case "data":
+            message = `Data: ${detail.data.seed.join(", ")}`;
+            type = "success";
+            break;
+          case "error":
+            message = `Error: ${detail.error}`;
+            type = "error";
+            break;
+          default:
+            message = `Event: ${detail}`;
+            type = "info";
+        }
+      } else {
+        message = JSON.stringify(detail, null, 2);
+      }
+    } else {
+      message = String(detail);
+    }
+
+    toastManager.show(message, type);
+  });
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      toastManager.show("Test toast", "success", 3000);
+    }, 1000);
   });
 </script>

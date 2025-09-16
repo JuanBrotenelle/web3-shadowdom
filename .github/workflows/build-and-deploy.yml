@@ -36,13 +36,18 @@ jobs:
         run: |
           mkdir -p netlify-build
           mkdir -p netlify-build/dist
-          mkdir -p netlify-build/assets
 
           cp -r modal/dist/* netlify-build/dist/
 
           cp modal/index.html netlify-build/
 
-          cp -r modal/assets netlify-build/assets/
+          if [ -d netlify-build/dist/icons ]; then
+          mv netlify-build/dist/icons netlify-build/
+          fi
+
+          if [ -d netlify-build/dist/anims ]; then
+            mv netlify-build/dist/anims netlify-build/
+          fi
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

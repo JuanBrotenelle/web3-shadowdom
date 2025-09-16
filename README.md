@@ -186,7 +186,3 @@ Now it looks like this
 3. Support tailwind not from safe-list `utilities`
 4. Confetti
 5. Support custom wallet-config inject
-
-## Thanks
-
-[One Page Love](https://onepagelove.com/) - for free html landing

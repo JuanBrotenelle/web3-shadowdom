@@ -18,10 +18,7 @@ import { motion } from "motion-v";
       :transition="{ delay: 0.3 }"
       class="absolute inset-0 flex items-end sm:items-center justify-center"
     >
-      <RouterView
-        class="border-[rgb(var(--color-muted))] border p-2 rounded-md"
-        v-slot="{ Component }"
-      >
+      <RouterView class="p-2 rounded-md" v-slot="{ Component }">
         <div class="bg-container-wallet">
           <transition name="modal" mode="out-in">
             <component :is="Component" />
